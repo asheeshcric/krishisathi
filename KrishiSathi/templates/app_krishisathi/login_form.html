@@ -1,0 +1,58 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="{% static "css/login.css" %}">
+
+    <meta charset="UTF-8">
+    <title>KrishiSathi</title>
+</head>
+<body background="{% static "images/bg2.jpg" %}">
+
+<!-- Navigation Bar Starts -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <a href="/">
+            <img src="{% static "images/logo1.png" %}" height="50" width="120">
+        </a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/signup/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li class="active"><a href="/login/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- Navigation Bar Ends -->
+<div class = "container">
+	<div class="wrapper">
+		<form action="" method="POST" name="Login_Form" class="form-signin">
+            {% csrf_token %}
+		    <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
+			  <hr class="colorgraph"><br>
+
+			  <input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" />
+			  <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
+
+            <input type="submit" value="Login" class="btn btn-primary btn-block btn-lg" tabindex="7">
+		</form>
+	</div>
+</div>
+
+</body>
+</html>
