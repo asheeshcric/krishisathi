@@ -1,9 +1,9 @@
 <?php 
 
-DEFINE ('DBUSER', 'iwagroupa'); 
-DEFINE ('DBPW', 'iwagroupa'); 
-DEFINE ('DBHOST', 'insightworkshop.cqxmg1hzjwc5.us-west-2.rds.amazonaws.com'); 
-DEFINE ('DBNAME', 'iwagroupa'); 
+DEFINE ('DBUSER', ''); 
+DEFINE ('DBPW', ''); 
+DEFINE ('DBHOST', ''); 
+DEFINE ('DBNAME', ''); 
 
 $dbc = mysqli_connect(DBHOST,DBUSER,DBPW);
 if (!$dbc) {
