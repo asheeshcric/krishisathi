@@ -1,0 +1,109 @@
+Apple	5.0-6.5
+Ash	6.0-7.5
+Azalea	4.5-6.0
+Basswood	6.0-7.5
+Beautybush	6.0-7.5
+Birch	5.0-6.5
+Blackberry	5.0-6.0
+Blueberry	4.0-6.0
+Boxwood	6.0-7.5
+Cherry, sour	6.0-7.0
+Chestnut	5.0-6.5
+Crab apple	6.0-7.5
+Dogwood	5.0-7.0
+Elder, box	6.0-8.0
+Fir, balsam	5.0-6.0
+Fir, Douglas	6.0-7.0
+Hemlock	5.0-6.0
+Hydrangea, blue_flowered	4.0-5.0
+Hydrangea, pink_flowered	6.0-7.0
+Juniper	5.0-6.0
+Laurel, mountain	4.5-6.0
+Lemon	6.0-7.5
+Lilac	6.0-7.5
+Maple, sugar	6.0-7.5
+Oak, white	5.0-6.5
+Orange	6.0-7.5
+Peach	6.0-7.0
+Pear	6.0-7.5
+Pecan	6.4-8.0
+Pine, red	5.0-6.0
+Pine, white	4.5-6.0
+Plum	6.0-8.0
+Raspberry, red	5.5-7.0
+Rhododendron	4.5-6.0
+Spruce	5.0-6.0
+Walnut, black	6.0-8.0
+Willow	6.0-8.0
+Vegetables
+
+Asparagus	6.0-8.0
+Bean, pole	6.0-7.5
+Beet	6.0-7.5
+Broccoli	6.0-7.0
+Brussels sprout	6.0-7.5
+Cabbage	6.0-7.0
+Carrot	5.5-7.0
+Cauliflower	5.5-7.5
+Celery	5.8-7.0
+Chive	6.0-7.0
+Cucumber	5.5-7.0
+Garlic	5.5-8.0
+Kale	6.0-7.5
+Lettuce	6.0-7.0
+Pea, sweet	6.0-7.5
+Pepper, sweet	5.5-7.0
+Potato	4.8-6.5
+Pumpkin	5.5-7.5
+Radish	6.0-7.0
+Spinach	6.0-7.5
+Squash, crookneck	6.0-7.5
+Squash, Hubbard	5.5-7.0
+Tomato	5.5-7.5
+Flowers
+
+Alyssum	6.0-7.5
+Aster, New England	6.0-8.0
+Baby’s breath	6.0-7.0
+Bachelor’s button	6.0-7.5
+Bee balm	6.0-7.5
+Begonia	5.5-7.0
+Black_eyed Susan	5.5-7.0
+Bleeding heart	6.0-7.5
+Canna	6.0-8.0
+Carnation	6.0-7.0
+Chrysanthemum	6.0-7.5
+Clematis	5.5-7.0
+Coleus	6.0-7.0
+Coneflower, purple	5.0-7.5
+Cosmos	5.0-8.0
+Crocus	6.0-8.0
+Daffodil	6.0-6.5
+Dahlia	6.0-7.5
+Daisy, Shasta	6.0-8.0
+Daylily	6.0-8.0
+Delphinium	6.0-7.5
+Foxglove	6.0-7.5
+Geranium	6.0-8.0
+Gladiolus	5.0-7.0
+Hibiscus	6.0-8.0
+Hollyhock	6.0-8.0
+Hyacinth	6.5-7.5
+Iris, blue flag	5.0-7.5
+Lily_of_the_valley	4.5-6.0
+Lupine	5.0-6.5
+Marigold	5.5-7.5
+Morning glory	6.0-7.5
+Narcissus, trumpet	5.5-6.5
+Nasturtium	5.5-7.5
+Pansy	5.5-6.5
+Peony	6.0-7.5
+Petunia	6.0-7.5
+Phlox, summer	6.0-8.0
+Poppy, oriental	6.0-7.5
+Rose, hybrid tea	5.5-7.0
+Rose, rugosa	6.0-7.0
+Snapdragon	5.5-7.0
+Sunflower	6.0-7.5
+Tulip	6.0-7.0
+Zinnia	5.5-7.0
