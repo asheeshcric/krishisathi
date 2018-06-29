@@ -15,6 +15,9 @@
     <!-- Bootstrap core CSS -->
     <link href="{% static  'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="img/png" href="{% static 'img/krishi_logo.png' %}">
+
     <!-- Custom styles for this template -->
     <link href="{% static 'css/full-width-pics.css' %}" rel="stylesheet">
     <style>
@@ -60,18 +63,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'homepage' %}">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
+                {% url 'homepage' as homepage %}
+                {% url 'about' as about %}
+                {% url 'signup' as signup %}
+                {% url 'login' as login %}
+                <li class="nav-item {% ifequal request.path  homepage %}active{% endifequal %}">
+                    <a class="nav-link" href="{% url 'homepage' %}">Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {% ifequal request.path  about %}active{% endifequal %}">
                     <a class="nav-link" href="{% url 'about' %}">About</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {% ifequal request.path  signup %}active{% endifequal %}">
                     <a class="nav-link" href={% url 'signup' %}>Sign Up</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {% ifequal request.path  login %}active{% endifequal %}">
                     <a class="nav-link" href={% url 'login' %}>Login</a>
                 </li>
             </ul>
