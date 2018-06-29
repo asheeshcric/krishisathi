@@ -1,7 +1,44 @@
 {% extends 'layout.html' %}
+{% load static %}
 
+
+{% block style %}
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
+{% endblock %}
 
 
 {% block body %}
-    <p>Login Page</p>
+    <div class="container">
+        <div class="row">
+            <div class="pen-title">
+                <h1>Krishi Sathi Login</h1>
+            </div>
+            <div class="container">
+                <div class="card"></div>
+                <div class="card">
+                    <h1 class="title">Login</h1>
+                    <form>
+                        <div class="input-container">
+                            <input type="text" id="Username" required="required"/>
+                            <label for="Username">Username</label>
+                            <div class="bar"></div>
+                        </div>
+                        <div class="input-container">
+                            <input type="password" id="Password" required="required"/>
+                            <label for="Password">Password</label>
+                            <div class="bar"></div>
+                        </div>
+                        <div class="button-container">
+                            <button><span>Login</span></button>
+                        </div>
+                        <div class="footer"><a href="#">Forgot your password?</a></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block script %}
 {% endblock %}
