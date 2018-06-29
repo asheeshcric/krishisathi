@@ -1,5 +1,5 @@
 import random
-
+import csv
 
 def process_data(line):
 	features = line.split(',')
@@ -27,3 +27,4 @@ def main():
 
 if __name__=='__main__':
 	main()
+	
