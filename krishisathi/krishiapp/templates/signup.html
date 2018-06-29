@@ -22,20 +22,69 @@
                 <div class="card"></div>
                 <div class="card">
                     <h1 class="title">Sign Up</h1>
-                    <form>
-                        <div class="input-container">
-                            <input type="text" id="Username" required="required"/>
-                            <label for="Username">Username</label>
-                            <div class="bar"></div>
+                    <form action="{% url 'signup' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="input-container">
+                                    <input type="text" id="first_name" required="required" name="first_name"/>
+                                    <label for="first_name">First Name</label>
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-container">
+                                    <input type="password" id="last_name" required="required" name="last_name"/>
+                                    <label for="last_name">Last Name</label>
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="input-container">
-                            <input type="password" id="Password" required="required"/>
-                            <label for="Password">Password</label>
-                            <div class="bar"></div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="input-container">
+                                    <input type="text" id="username" required="required" name="username"/>
+                                    <label for="username">Username</label>
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-container">
+                                    <input type="password" id="password" required="required" name="password"/>
+                                    <label for="password">Password</label>
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="input-container">
+                                    <input type="text" id="address" required="required" name="address"/>
+                                    <label for="address">Address</label>
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="input-container">
+                                    <input type="text" id="email" required="required" name="email"/>
+                                    <label for="email">Email</label>
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-container">
+                                    <input type="text" id="contact" required="required" name="contact"/>
+                                    <label for="contact">Contact Phone</label>
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
                         </div>
                         <div class="button-container">
-                            <button><span>Register</span></button>
+                            <button><span>Login</span></button>
                         </div>
+                        <div class="footer"><a href="#">Forgot your password?</a></div>
                     </form>
                 </div>
             </div>

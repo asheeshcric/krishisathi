@@ -96,36 +96,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                {% url 'homepage' as homepage %}
-                {% url 'about' as about %}
-                {% url 'signup' as signup %}
-                {% url 'login' as login %}
-                <li class="nav-item {% ifequal request.path  homepage %}active{% endifequal %}">
-                    <a class="nav-link" href="{% url 'homepage' %}">Home</a>
-                </li>
-                <li class="nav-item {% ifequal request.path  about %}active{% endifequal %}">
-                    <a class="nav-link" href="{% url 'about' %}">About</a>
-                </li>
-                <li class="nav-item {% ifequal request.path  signup %}active{% endifequal %}">
-                    <a class="nav-link" href={% url 'signup' %}>Sign Up</a>
-                </li>
-                <li class="nav-item {% ifequal request.path  login %}active{% endifequal %}">
-                    <a class="nav-link" href={% url 'login' %}>Login</alogin>
-                </li>
-            </ul>
-        </div>
