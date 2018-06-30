@@ -1,34 +1,11 @@
 {% if messages %}
     {% for message in messages %}
         {% if message.level == 25 %}
-            <div class="alert alert-success alert-dismissible fade in alert-full text-center" role="alert">
-                <button type="button" class="close" data-dismiss="alert"><span
-                        aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
+            <div class="alert alert-success text-center">
                 {{ message }}
             </div>
-        {% endif %}
-        {% if message.level == 40 %}
-            <div class="alert alert-danger alert-dismissible fade in alert-full text-center" role="alert">
-                <button type="button" class="close" data-dismiss="alert"><span
-                        aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
-                {{ message }}
-            </div>
-        {% endif %}
-        {% if message.level == 30 %}
-            <div class="alert alert-warning alert-dismissible fade in alert-full text-center" role="alert">
-                <button type="button" class="close" data-dismiss="alert"><span
-                        aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
-                {{ message }}
-            </div>
-        {% endif %}
-        {% if message.level == 20 %}
-            <div class="alert alert-info alert-dismissible fade in alert-full text-center" role="alert">
-                <button type="button" class="close" data-dismiss="alert"><span
-                        aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
+        {% else %}
+            <div class="alert alert-danger text-center">
                 {{ message }}
             </div>
         {% endif %}

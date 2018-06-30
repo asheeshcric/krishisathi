@@ -12,11 +12,12 @@
 
     <title>Krishi Sathi</title>
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="img/png" href="{% static 'img/krishi_logo.png' %}">
+
     <!-- Bootstrap core CSS -->
     <link href="{% static  'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="img/png" href="{% static 'img/krishi_logo.png' %}">
 
     <!-- Custom styles for this template -->
     <link href="{% static 'css/full-width-pics.css' %}" rel="stylesheet">
@@ -44,6 +45,10 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
+        .main-panel {
+            margin-left: 180px;
+            height: 100%;
+        }
     </style>
 
     {% block style %}
@@ -54,6 +59,8 @@
 <body>
 
 {% include 'messages.html' %}
+
+
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -69,18 +76,28 @@
                 {% url 'about' as about %}
                 {% url 'signup' as signup %}
                 {% url 'login' as login %}
+                {% url 'profile' as profile %}
                 <li class="nav-item {% ifequal request.path  homepage %}active{% endifequal %}">
                     <a class="nav-link" href="{% url 'homepage' %}">Home</a>
                 </li>
                 <li class="nav-item {% ifequal request.path  about %}active{% endifequal %}">
                     <a class="nav-link" href="{% url 'about' %}">About</a>
                 </li>
-                <li class="nav-item {% ifequal request.path  signup %}active{% endifequal %}">
-                    <a class="nav-link" href={% url 'signup' %}>Sign Up</a>
-                </li>
-                <li class="nav-item {% ifequal request.path  login %}active{% endifequal %}">
-                    <a class="nav-link" href={% url 'login' %}>Login</a>
-                </li>
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item {% ifequal request.path  profile %}active{% endifequal %}">
+                        <a class="nav-link" href={% url 'profile' %}>Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href={% url 'logout' %}>Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item {% ifequal request.path  signup %}active{% endifequal %}">
+                        <a class="nav-link" href={% url 'signup' %}>Sign Up</a>
+                    </li>
+                    <li class="nav-item {% ifequal request.path  login %}active{% endifequal %}">
+                        <a class="nav-link" href={% url 'login' %}>Login</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>
@@ -100,6 +117,10 @@
 <!-- Bootstrap core JavaScript -->
 <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
 <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script>
+    $(".alert").delay(3000).slideUp(500);
+</script>
+
 {% block script %}
 {% endblock %}
 
