@@ -10,10 +10,11 @@ class UserProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
-
 class UserReadings(models.Model):
     ph = models.FloatField()
     temp = models.FloatField()
     humidity = models.FloatField()
     moisture = models.FloatField()
+    classifier = models.CharField(max_length=20, null=True)
+    datetime = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)

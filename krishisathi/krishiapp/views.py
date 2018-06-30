@@ -41,7 +41,7 @@ def login_user(request):
             if user:
                 login(request, user)
                 messages.success(request, 'Login Successful.')
-                return redirect('homepage')
+                return redirect('profile')
             else:
                 messages.error(request, 'Please enter correct username and password.')
         except Exception as error:

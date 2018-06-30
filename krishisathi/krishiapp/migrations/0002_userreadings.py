@@ -7,19 +7,22 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    initial = True
-
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ('krishiapp', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='UserProfile',
+            name='UserReadings',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('contact', models.CharField(max_length=20)),
-                ('address', models.CharField(max_length=50)),
+                ('ph', models.FloatField()),
+                ('temp', models.FloatField()),
+                ('humidity', models.FloatField()),
+                ('moisture', models.FloatField()),
+                ('classifier', models.CharField(max_length=20, null=True)),
+                ('datetime', models.DateTimeField(auto_now_add=True)),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),

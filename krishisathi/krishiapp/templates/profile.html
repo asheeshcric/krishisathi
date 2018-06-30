@@ -5,8 +5,83 @@
     <title>Profile | KrishiSathi</title>
 {% endblock %}
 
+{% block style %}
+    <style>
+        .line-chart {
+            width: 80%;
+            margin-left: 10%;
+        }
+    </style>
+
+{% endblock %}
+
 
 {% block body %}
+    <br>
+    <div class="row">
+        <div class="col-6">
+            <div class="line-chart">
+                <canvas id="ph_chart"></canvas>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="line-chart">
+                <canvas id="moisture_chart"></canvas>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-6">
+            <div class="line-chart">
+                <canvas id="temp_chart"></canvas>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="line-chart">
+                <canvas id="humidity_chart"></canvas>
+            </div>
+        </div>
+    </div>
+{% endblock %}
 
+
+{% block script %}
+    <script>
+        var data = {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [{
+                label: "My First dataset",
+                {#backgroundColor: 'rgb(255, 99, 132)',#}
+                borderColor: '#8959a8',
+                data: [0, 10, 5, 2, 20, 30, 45],
+            }]
+        };
+        var options = {};
+        var ph = document.getElementById('ph_chart');
+        var moisture = document.getElementById('moisture_chart');
+        var temp = document.getElementById('temp_chart');
+        var humidity = document.getElementById('humidity_chart');
+        var phChart = new Chart(ph, {
+            type: 'line',
+            data: data,
+            options: options
+        });
+        var tempChart = new Chart(temp, {
+            type: 'line',
+            data: data,
+            options: options
+        });
+        var humidityChart = new Chart(humidity, {
+            type: 'line',
+            data: data,
+            options: options
+        });
+        var moistureChart = new Chart(moisture, {
+            type: 'line',
+            data: data,
+            options: options
+        });
+    </script>
 
 {% endblock %}
