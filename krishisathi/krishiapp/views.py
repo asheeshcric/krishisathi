@@ -19,10 +19,10 @@ def signup(request):
             user = User.objects.create_user(username=request.POST.get('username'),
                                             email=request.POST.get('email'),
                                             password=request.POST.get('password'),
+                                            first_name=request.POST.get('first_name'),
+                                            last_name=request.POST.get('last_name'),
                                             is_superuser=0, is_active=1)
             UserProfile.objects.create(user=user, address=request.POST.get('address'),
-                                       first_name=request.POST.get('first_name'),
-                                       last_name=request.POST.get('last_name'),
                                        contact=request.POST.get('contact'))
             login_user = authenticate(request, username=user.username, password=request.POST.get('password'))
             login(request, login_user)
