@@ -3,7 +3,7 @@ import csv
 
 def process_data(line):
 	features = line.split(',')
-	for i in range(100):
+	for i in range(500):
 	    for feature in features:
 		    if '\n' not in feature:
 			    low, high = feature.split('-')
