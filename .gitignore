@@ -9,7 +9,7 @@
 *.sqlite3
 db.sqlite3/*
 
-
+*.swp
 
 # Created by https://www.gitignore.io
 
