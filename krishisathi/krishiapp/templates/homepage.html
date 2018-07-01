@@ -1,42 +1,44 @@
 {% extends 'layout.html' %}
+{% load static %}
 
 {% block title %}
     <title>Krishi Sathi</title>
 {% endblock %}
 
 {% block body %}
-
-    <!-- Header - set the background image for the header in the line below -->
-    <header class="py-5 bg-image-full" style="background-image: url('https://unsplash.it/1900/1080?image=1076');">
-        <img class="img-fluid d-block mx-auto" src="http://placehold.it/200x200&text=Logo" alt="">
+    <body>
+      <header class="py-5 bg-image-full" style="background-image: url('{% static "img/newimg241.jpg" %}');">
+         <img  src="{% static "img/krishi_logo.png" %}" style="display:block;margin-left:auto;margin-right:auto;"/>  
     </header>
 
     <!-- Content section -->
     <section class="py-5">
-        <div class="container">
-            <h1>Section Heading</h1>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat
-                architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque
-                amet.</p>
-        </div>
+      <div class="container">
+        <div class="text-center">
+        <h1>WELCOME TO KRISHI SATHI</h1>
+      </div>
+        <p class="lead">Smart Agriculture Project:"KRISHI SATHI"</p>
+        <p class="lead" style="text-align: justify;">Technology has played the very vital role in bringing the whole world into the modern era.It has covered almost all the field that are familiar to us.To bring the change in farming process in the agricultural coutries this very Smart Agricultural Project titled as Krishi Sathi has been introduced.With the help of the hardware module contained with arduino uno AT MEGA 328 implanted on the soil,the pH value,moisturity content,humidity and temperature of the soil is measured out and stored in my SQL Database through wifi bee and with the help of the database,the suitable crops according to the favorable parameters are suggested to the farmers with the motive to give rise to the cultivation of suitable crops.This project accounts with internet of thing(IOT).</p>
+    </div>
     </section>
 
     <!-- Image Section - set the background image for the header in the line below -->
-    <section class="py-5 bg-image-full" style="background-image: url('https://unsplash.it/1900/1080?image=1081');">
-        <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
-        <div style="height: 200px;"></div>
+    <img src="{% static "img/krishiphoto123.jpg" %}" style="display:block;margin-left:auto;margin-right:auto;"/>
+      <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
+      <div style="height: 200px;"></div>
     </section>
 
     <!-- Content section -->
     <section class="py-5">
-        <div class="container">
-            <h1>Section Heading</h1>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat
-                architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque
-                amet.</p>
-        </div>
+      <div class="container">
+      <div class="text-center">
+      <h3><i> FURTHER MORE </i></h3><br>
+      </div>
+      <div class="text-center">
+        <p class="lead">Benefits Of Krishi Sathi</p>
+      </div>
+        <p class="lead" style="text-align: justify;">By the implementation of the evolving technologies and techniques in the field of agriculture,the target is to increase the output of the agricultural input . Krishi Sathi will help to increase the cultivation at the darastically higher rate as it suggest the suitable crops as per the environment and quality of the soil. </p>
+      </div>
     </section>
-
+</body>
 {% endblock %}
