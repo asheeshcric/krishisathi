@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
@@ -61,14 +61,6 @@ def about(request):
 
 
 def profile(request, id):
-    # For datetime series, the format of data should be
-    # data: [{
-    #     x: new Date(),
-    #     y: 1
-    # }, {
-    #        t: new Date(),
-    #    y: 10
-    # }]
     readings = UserReadings.objects.filter(user_id=id).values('ph', 'temp', 'moisture', 'humidity', 'datetime')
     ph_readings = []
     temp_readings = []
@@ -92,32 +84,17 @@ def profile(request, id):
     return render(request, 'profile.html', context)
 
 
+def api_add_readings(request):
+    try:
+        UserReadings.objects.create(user_id=request.GET.get('user_id'),
+                                    ph=request.GET.get('ph'),
+                                    humidity=request.GET.get('humidity'),
+                                    moisture=request.GET.get('moisture'),
+                                    temp=request.GET.get('temp'),
+                                    datetime=request.GET.get('datetime'))
+        return JsonResponse({'success': True}, safe=False)
 
-# var chart = new Chart(ctx, {
-#     type: 'line',
-#     data: data,
-#     options: {
-#         scales: {
-#             xAxes: [{
-#                 type: 'time',
-#                 distribution: 'linear/series'
-#                 time: {
-#                     displayFormats: {
-#                         quarter: 'MMM YYYY'
-#                     }
-#                 }
-#             }]
-#         }
-#     }
-# })
-
-
-def api_add_readings(request, id):
-    UserReadings.objects.create(user_id=id,
-                                ph=request.GET.get('ph'),
-                                humidity=request.GET.get('humidity'),
-                                moisture=request.GET.get('moisture'),
-                                temp=request.GET.get('temp'))
-    pass
+    except Exception as error:
+        return JsonResponse({'success': False}, safe=False)
 
 

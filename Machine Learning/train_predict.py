@@ -38,3 +38,9 @@ def main():
     
 if __name__=='__main__':
     main()
+
+
+http://34.208.164.56/api/addreadings/1?moisture=0.32&ph=4.5&humidity=0.8&temp=0.43
+
+
+http://34.208.164.56/api/addreadings?moisture=0.78&ph=4.5&humidity=0.89&datetime='somedate'&user_id=1
