@@ -18,7 +18,7 @@ def train_model():
     joblib.dump(clf, filename)
 
 
-def test_model():
+def test_model(new_data):
     model = joblib.load('trained_model.sav')
     X_new = [[5.1, 0.5, 0.5, 0.3]]
     y_prediction = model.predict(X_new)
