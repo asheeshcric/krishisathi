@@ -48,13 +48,14 @@
 
 {% block script %}
     <script>
+
         var data = {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            labels: {{ datetimes | safe }},
             datasets: [{
                 label: "My First dataset",
                 {#backgroundColor: 'rgb(255, 99, 132)',#}
                 borderColor: '#8959a8',
-                data: [0, 10, 5, 2, 20, 30, 45],
+                data: {{ temp_readings }},
             }]
         };
         var options = {};

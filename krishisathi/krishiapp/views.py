@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-from krishiapp.models import UserProfile
+from krishiapp.models import UserProfile, UserReadings
 
 
 # Create your views here.
@@ -27,7 +27,7 @@ def signup(request):
             login_user = authenticate(request, username=user.username, password=request.POST.get('password'))
             login(request, login_user)
             messages.success(request, 'User created successfully.')
-            return redirect('profile')
+            return redirect('profile', user.id)
         except Exception as error:
             print(error)
             messages.error(request, 'User creation failed. Please try again.')
@@ -41,7 +41,7 @@ def login_user(request):
             if user:
                 login(request, user)
                 messages.success(request, 'Login Successful.')
-                return redirect('profile')
+                return redirect('profile', user.id)
             else:
                 messages.error(request, 'Please enter correct username and password.')
         except Exception as error:
@@ -60,5 +60,55 @@ def about(request):
     return render(request, 'about.html')
 
 
-def profile(request):
-    return render(request, 'profile.html')
+def profile(request, id):
+    # For datetime series, the format of data should be
+    # data: [{
+    #     x: new Date(),
+    #     y: 1
+    # }, {
+    #        t: new Date(),
+    #    y: 10
+    # }]
+    readings = UserReadings.objects.filter(user_id=id).values('ph', 'temp', 'moisture', 'humidity', 'datetime')
+    ph_readings = []
+    temp_readings = []
+    moisture_readings = []
+    humidity_readings = []
+    datetimes = []
+    for reading in readings:
+        ph_readings.append(reading.get('ph'))
+        temp_readings.append(reading.get('temp'))
+        moisture_readings.append(reading.get('moisture'))
+        humidity_readings.append(reading.get('humidity'))
+        datetimes.append(reading.get('datetime').isoformat())
+    print(ph_readings, datetimes)
+    context = {
+        'ph_readings': ph_readings,
+        'temp_readings': temp_readings,
+        'moisture_readings': moisture_readings,
+        'humidity_readings': humidity_readings,
+        'datetimes': datetimes
+    }
+    return render(request, 'profile.html', context)
+
+
+
+# var chart = new Chart(ctx, {
+#     type: 'line',
+#     data: data,
+#     options: {
+#         scales: {
+#             xAxes: [{
+#                 type: 'time',
+#                 distribution: 'linear/series'
+#                 time: {
+#                     displayFormats: {
+#                         quarter: 'MMM YYYY'
+#                     }
+#                 }
+#             }]
+#         }
+#     }
+# })
+
+
