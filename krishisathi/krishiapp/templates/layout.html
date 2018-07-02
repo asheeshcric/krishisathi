@@ -3,58 +3,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Krishi Sathi</title>
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="img/png" href="{% static 'img/krishi_logo.png' %}">
-
-    <!-- Bootstrap core CSS -->
-    <link href="{% static  'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-
-
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/full-width-pics.css' %}" rel="stylesheet">
-    <style>
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 30px;
-            text-align: center;
-            padding-top: 5px;
-            background-color: #343a40;
-        }
-
-        .navbar {
-            height: 60px;
-        }
-
-        body {
-            background: #e9e9e9;
-            color: #666666;
-            font-family: 'RobotoDraft', 'Roboto', sans-serif;
-            font-size: 14px;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        .main-panel {
-            margin-left: 180px;
-            height: 100%;
-        }
-    </style>
-
-    {% block style %}
-    {% endblock %}
-
-</head>
-
 <body>
 
 {% include 'messages.html' %}
@@ -120,13 +68,70 @@
     $(".alert").delay(3000).slideUp(500);
 </script>
 
+<!-- Moment JS CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.js"></script>
+
 <!-- Chart JS CDN for Visualization -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
 
 {% block script %}
 {% endblock %}
 
 </body>
+
+<head>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="img/png" href="{% static 'img/krishi_logo.png' %}">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Krishi Sathi</title>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static  'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/full-width-pics.css' %}" rel="stylesheet">
+    <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            padding-top: 5px;
+            background-color: #343a40;
+        }
+
+        .navbar {
+            height: 60px;
+        }
+
+        body {
+            background: #e9e9e9;
+            color: #666666;
+            font-family: 'RobotoDraft', 'Roboto', sans-serif;
+            font-size: 14px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .main-panel {
+            margin-left: 180px;
+            height: 100%;
+        }
+    </style>
+
+    {% block style %}
+    {% endblock %}
+
+</head>
 
 
 </html>

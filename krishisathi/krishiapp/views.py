@@ -69,9 +69,9 @@ def profile(request, id):
     datetimes = []
     for reading in readings:
         ph_readings.append(reading.get('ph'))
-        temp_readings.append(reading.get('temp'))
-        moisture_readings.append(reading.get('moisture'))
-        humidity_readings.append(reading.get('humidity'))
+        temp_readings.append(reading.get('temp') * 100)
+        moisture_readings.append(reading.get('moisture') * 100)
+        humidity_readings.append(reading.get('humidity') * 100)
         datetimes.append(reading.get('datetime').isoformat())
     print(ph_readings, datetimes)
     context = {
@@ -79,7 +79,12 @@ def profile(request, id):
         'temp_readings': temp_readings,
         'moisture_readings': moisture_readings,
         'humidity_readings': humidity_readings,
-        'datetimes': datetimes
+        'datetimes': datetimes,
+        'user': User.objects.get(id=id),
+        'ph_mean': round(sum(ph_readings) / float(len(ph_readings)), 2),
+        'temp_mean': round(sum(temp_readings) / float(len(temp_readings)), 2),
+        'moisture_mean': round(sum(moisture_readings) / float(len(moisture_readings)), 2),
+        'humidity_mean': round(sum(humidity_readings) / float(len(humidity_readings)), 2),
     }
     return render(request, 'profile.html', context)
 
@@ -88,9 +93,9 @@ def api_add_readings(request):
     try:
         UserReadings.objects.create(user_id=request.GET.get('user_id'),
                                     ph=request.GET.get('ph'),
-                                    humidity=request.GET.get('humidity'),
-                                    moisture=request.GET.get('moisture'),
-                                    temp=request.GET.get('temp'),
+                                    humidity=float(request.GET.get('humidity')) / 100,
+                                    moisture=float(request.GET.get('moisture')) / 100,
+                                    temp=float(request.GET.get('temp')) / 100,
                                     datetime=request.GET.get('datetime'))
         return JsonResponse({'success': True}, safe=False)
 

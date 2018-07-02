@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-
+{% load numeric_operations %}
 
 {% block title %}
     <title>Profile | KrishiSathi</title>
@@ -11,6 +11,9 @@
             width: 80%;
             margin-left: 10%;
         }
+        table, th, td {
+           border: 5px solid black;
+        }
     </style>
 
 {% endblock %}
@@ -18,28 +21,95 @@
 
 {% block body %}
     <br>
-    <div class="row">
-        <div class="col-6">
-            <div class="line-chart">
-                <canvas id="ph_chart"></canvas>
+    <div class="container-fluid" style="margin-bottom: 20%">
+        <div class="row text-center">
+            <div class="col-6 offset-3">
+                <h1>Welcome "{{ user.first_name }} {{ user.last_name }}"</h1>
             </div>
         </div>
-        <div class="col-6">
-            <div class="line-chart">
-                <canvas id="moisture_chart"></canvas>
+        <div class="row text-center">
+            <div class="col-6 offset-3">
+                <h1>USER ID: {{ user.id }}</h1>
             </div>
         </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-6">
-            <div class="line-chart">
-                <canvas id="temp_chart"></canvas>
+        <br>
+        <div class="row text-center">
+            <div class="col-8 offset-2">
+                <h3>The readings below indicate that your soil is suitable
+                    for {{ user.userreadings_set.last.classifier }}</h3>
             </div>
         </div>
-        <div class="col-6">
-            <div class="line-chart">
-                <canvas id="humidity_chart"></canvas>
+        <br>
+        <div class="row">
+            <div class="col-6">
+                <div class="line-chart">
+                    <canvas id="ph_chart"></canvas>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="line-chart">
+                    <canvas id="moisture_chart"></canvas>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-6">
+                <div class="line-chart">
+                    <canvas id="temp_chart"></canvas>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="line-chart">
+                    <canvas id="humidity_chart"></canvas>
+                </div>
+            </div>
+        </div>
+        <br><br><br>
+        <div class="row">
+            <div class="col-5 offset-4">
+                <h2>Some Insights from the readings:</h2>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-10 offset-1">
+                <table class="table table-bordered table-striped" style="border-color: black">
+                    <thead>
+                    <tr>
+                        <th>Characteristic</th>
+                        <th>Mean</th>
+                        <th>High</th>
+                        <th>Low</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>pH</td>
+                        <td>{{ ph_readings | find_mean }}</td>
+                        <td>{{ ph_readings | find_max }}</td>
+                        <td>{{ ph_readings | find_min }}</td>
+                    </tr>
+                    <tr>
+                        <td>Temperature (&#8451;)</td>
+                        <td>{{ temp_readings | find_mean }}</td>
+                        <td>{{ temp_readings | find_max }}</td>
+                        <td>{{ temp_readings | find_min }}</td>
+                    </tr>
+                    <tr>
+                        <td>Moisture (%)</td>
+                        <td>{{ moisture_readings | find_mean }}</td>
+                        <td>{{ moisture_readings | find_max }}</td>
+                        <td>{{ moisture_readings | find_min }}</td>
+                    </tr>
+                    <tr>
+                        <td>Humidity (%)</td>
+                        <td>{{ humidity_readings | find_mean }}</td>
+                        <td>{{ humidity_readings | find_max }}</td>
+                        <td>{{ humidity_readings | find_min }}</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -48,41 +118,79 @@
 
 {% block script %}
     <script>
+        var datetimes = changeDateFormat({{ datetimes | safe }});
 
-        var data = {
-            labels: {{ datetimes | safe }},
+        var phData = {
+            labels: datetimes,
             datasets: [{
-                label: "My First dataset",
-                {#backgroundColor: 'rgb(255, 99, 132)',#}
+                label: "pH Readings",
+                borderColor: '#66a818',
+                data: {{ ph_readings }},
+            }]
+        };
+        var tempData = {
+            labels: datetimes,
+            datasets: [{
+                label: "Temperature Readings (C)",
                 borderColor: '#8959a8',
                 data: {{ temp_readings }},
             }]
         };
-        var options = {};
+        var moistureData = {
+            labels: datetimes,
+            datasets: [{
+                label: "Moisture Readings (%)",
+                borderColor: '#21a8a0',
+                data: {{ moisture_readings }},
+            }]
+        };
+        var humidityData = {
+            labels: datetimes,
+            datasets: [{
+                label: "Humidity Readings (%)",
+                borderColor: '#a85d3e',
+                data: {{ humidity_readings }},
+            }]
+        };
+
+        var options = {
+            scales: {
+                xAxes: [{
+                    type: 'time',
+                    time: {
+                        displayFormats: {
+                            quarter: 'h:mm a'
+                        }
+                    }
+                }]
+            }
+        };
+
         var ph = document.getElementById('ph_chart');
         var moisture = document.getElementById('moisture_chart');
         var temp = document.getElementById('temp_chart');
         var humidity = document.getElementById('humidity_chart');
-        var phChart = new Chart(ph, {
-            type: 'line',
-            data: data,
-            options: options
-        });
-        var tempChart = new Chart(temp, {
-            type: 'line',
-            data: data,
-            options: options
-        });
-        var humidityChart = new Chart(humidity, {
-            type: 'line',
-            data: data,
-            options: options
-        });
-        var moistureChart = new Chart(moisture, {
-            type: 'line',
-            data: data,
-            options: options
-        });
+
+        var phChart = buildChart(ph, phData, options);
+        var tempChart = buildChart(temp, tempData, options);
+        var moistureChart = buildChart(moisture, moistureData, options);
+        var humidityChart = buildChart(humidity, humidityData, options);
+
+        function buildChart(ctx, data, options) {
+            return new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: options
+            });
+        }
+
+        function changeDateFormat(datetimes) {
+            dt = [];
+            for (datetime of datetimes) {
+                dt.push(new Date(datetime));
+            }
+            return dt;
+        }
     </script>
 
 {% endblock %}
