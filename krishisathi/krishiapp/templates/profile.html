@@ -36,10 +36,17 @@
         <div class="row text-center">
             <div class="col-8 offset-2">
                 <h3>The readings below indicate that your soil is suitable
-                    for {{ user.userreadings_set.last.classifier }}</h3>
+                    for <br><strong style="color: #13807f;">"
+                        {% if user.userreadings_set.last.classifier %}
+                            {{ user.userreadings_set.last.classifier }}
+                        {% else %}
+                            Not Classified Yet
+                        {% endif %}
+                        "
+                    </strong></h3>
             </div>
         </div>
-        <br>
+        <br><br>
         <div class="row">
             <div class="col-6">
                 <div class="line-chart">
@@ -67,7 +74,7 @@
         </div>
         <br><br><br>
         <div class="row">
-            <div class="col-5 offset-4">
+            <div class="col-6 offset-3">
                 <h2>Some Insights from the readings:</h2>
             </div>
         </div>

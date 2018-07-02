@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 
 from krishiapp.models import UserProfile, UserReadings
+from .machine_learning.machine_learning import test_model
 
 
 # Create your views here.
@@ -73,7 +74,6 @@ def profile(request, id):
         moisture_readings.append(reading.get('moisture') * 100)
         humidity_readings.append(reading.get('humidity') * 100)
         datetimes.append(reading.get('datetime').isoformat())
-    print(ph_readings, datetimes)
     context = {
         'ph_readings': ph_readings,
         'temp_readings': temp_readings,
@@ -91,15 +91,19 @@ def profile(request, id):
 
 def api_add_readings(request):
     try:
-        UserReadings.objects.create(user_id=request.GET.get('user_id'),
-                                    ph=request.GET.get('ph'),
-                                    humidity=float(request.GET.get('humidity')) / 100,
-                                    moisture=float(request.GET.get('moisture')) / 100,
-                                    temp=float(request.GET.get('temp')) / 100,
-                                    datetime=request.GET.get('datetime'))
+        reading = UserReadings.objects.create(user_id=request.GET.get('user_id'),
+                                              ph=request.GET.get('ph'),
+                                              humidity=float(request.GET.get('humidity')) / 100,
+                                              moisture=float(request.GET.get('moisture')) / 100,
+                                              temp=float(request.GET.get('temp')) / 100,
+                                              datetime=request.GET.get('datetime'))
+        new_data = [request.GET.get('ph'), float(request.GET.get('moisture')) / 100,
+                    float(request.GET.get('humidity')) / 100, float(request.GET.get('temp')) / 100]
+
+        reading.classifier = test_model(new_data)
+        reading.save()
+
         return JsonResponse({'success': True}, safe=False)
 
     except Exception as error:
         return JsonResponse({'success': False}, safe=False)
-
-

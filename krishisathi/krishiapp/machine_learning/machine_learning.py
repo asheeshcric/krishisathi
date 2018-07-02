@@ -20,10 +20,13 @@ def train_model():
 
 def test_model(new_data):
     model = joblib.load('trained_model.sav')
-    X_new = [[5.1, 0.5, 0.5, 0.3]]
-    y_prediction = model.predict(X_new)
-    print(y_prediction)
+    # X_new = [[5.1, 0.5, 0.5, 0.3]]
+    y_prediction = model.predict(new_data)
+    # print(y_prediction)
+    return y_prediction
 
 if __name__ == '__main__': test_model()
 
 # clf.fit(train[features], y)
+
+# Features = [pH,moisture,humidity,temperature]
