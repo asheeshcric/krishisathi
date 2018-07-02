@@ -112,3 +112,12 @@ def profile(request, id):
 # })
 
 
+def api_add_readings(request, id):
+    UserReadings.objects.create(user_id=id,
+                                ph=request.GET.get('ph'),
+                                humidity=request.GET.get('humidity'),
+                                moisture=request.GET.get('moisture'),
+                                temp=request.GET.get('temp'))
+    pass
+
+
