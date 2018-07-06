@@ -5,6 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.externals import joblib
 
+
 def train_model():
     data = pd.read_csv('dataset.csv')
     X = data.iloc[:, 0:4]
@@ -24,6 +25,7 @@ def test_model(new_data):
     y_prediction = model.predict(new_data)
     # print(y_prediction)
     return y_prediction
+
 
 if __name__ == '__main__': test_model()
 

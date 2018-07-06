@@ -2,6 +2,7 @@ from django import template
 
 register = template.Library()
 
+
 @register.filter(name='find_mean')
 def find_mean(value):
     return round(sum(value) / float(len(value)), 2)
