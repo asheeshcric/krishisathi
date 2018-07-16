@@ -81,10 +81,10 @@ def profile(request, id):
         'humidity_readings': humidity_readings,
         'datetimes': datetimes,
         'user': User.objects.get(id=id),
-        'ph_mean': round(sum(ph_readings) / float(len(ph_readings)), 2),
-        'temp_mean': round(sum(temp_readings) / float(len(temp_readings)), 2),
-        'moisture_mean': round(sum(moisture_readings) / float(len(moisture_readings)), 2),
-        'humidity_mean': round(sum(humidity_readings) / float(len(humidity_readings)), 2),
+        'ph_mean': round(sum(ph_readings) / float(len(ph_readings)), 2) if ph_readings else 0.0,
+        'temp_mean': round(sum(temp_readings) / float(len(temp_readings)), 2) if temp_readings else 0.0,
+        'moisture_mean': round(sum(moisture_readings) / float(len(moisture_readings)), 2) if moisture_readings else 0.0,
+        'humidity_mean': round(sum(humidity_readings) / float(len(humidity_readings)), 2) if humidity_readings else 0.0,
     }
     return render(request, 'profile.html', context)
 
