@@ -100,7 +100,7 @@ def api_add_readings(request):
         new_data = [float(request.GET.get('ph')), float(request.GET.get('moisture')) / 100,
                     float(request.GET.get('humidity')) / 100, float(request.GET.get('temp')) / 100]
 
-        reading.classifier = test_model(new_data)
+        reading.classifier = test_model(new_data)[0].upper()
         reading.save()
 
         return JsonResponse({'success': True}, safe=False)
