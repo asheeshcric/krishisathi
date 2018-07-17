@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.utils import timezone
 
 from krishiapp.models import UserProfile, UserReadings
 from .machine_learning.machine_learning import test_model
@@ -96,7 +97,7 @@ def api_add_readings(request):
                                               humidity=float(request.GET.get('humidity')) / 100,
                                               moisture=float(request.GET.get('moisture')) / 100,
                                               temp=float(request.GET.get('temp')) / 100,
-                                              datetime=request.GET.get('datetime'))
+                                              datetime=timezone.now())
         new_data = [float(request.GET.get('ph')), float(request.GET.get('moisture')) / 100,
                     float(request.GET.get('humidity')) / 100, float(request.GET.get('temp')) / 100]
 
