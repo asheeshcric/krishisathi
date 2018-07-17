@@ -1,9 +1,13 @@
+import os
+
 import pandas as pd
 import numpy as np
 
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.externals import joblib
+
+from krishisathi.settings import BASE_DIR
 
 
 def train_model():
@@ -20,9 +24,10 @@ def train_model():
 
 
 def test_model(new_data):
-    model = joblib.load('trained_model.sav')
+    model_path = os.path.join(BASE_DIR, 'krishiapp/machine_learning/trained_model.sav')
+    model = joblib.load(model_path)
     # X_new = [[5.1, 0.5, 0.5, 0.3]]
-    y_prediction = model.predict(new_data)
+    y_prediction = model.predict([new_data])
     # print(y_prediction)
     return y_prediction
 
