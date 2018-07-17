@@ -92,12 +92,12 @@ def profile(request, id):
 def api_add_readings(request):
     try:
         reading = UserReadings.objects.create(user_id=request.GET.get('user_id'),
-                                              ph=request.GET.get('ph'),
+                                              ph=float(request.GET.get('ph')),
                                               humidity=float(request.GET.get('humidity')) / 100,
                                               moisture=float(request.GET.get('moisture')) / 100,
                                               temp=float(request.GET.get('temp')) / 100,
                                               datetime=request.GET.get('datetime'))
-        new_data = [request.GET.get('ph'), float(request.GET.get('moisture')) / 100,
+        new_data = [float(request.GET.get('ph')), float(request.GET.get('moisture')) / 100,
                     float(request.GET.get('humidity')) / 100, float(request.GET.get('temp')) / 100]
 
         reading.classifier = test_model(new_data)
