@@ -103,7 +103,7 @@ def api_add_readings(request):
         reading.classifier = test_model(new_data)[0].upper()
         reading.save()
 
-        return JsonResponse({'success': True}, safe=False)
+        return JsonResponse({'success': True, 'classifier': reading.classifier}, safe=False)
 
     except Exception as error:
-        return JsonResponse({'success': False}, safe=False)
+        return JsonResponse({'success': False, 'classifier': None}, safe=False)
