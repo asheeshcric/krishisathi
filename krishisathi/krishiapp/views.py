@@ -88,6 +88,8 @@ def profile(request):
     except KeyError:
         pass
     classifiers = list(counter.keys())
+    if len(classifiers) > 3:
+        classifiers = classifiers[0:3]
     context = {
         'ph_readings': ph_readings,
         'temp_readings': temp_readings,
