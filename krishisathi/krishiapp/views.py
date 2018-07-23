@@ -61,9 +61,12 @@ def logout_user(request):
 def about(request):
     return render(request, 'about.html')
 
-
 def profile(request):
-    readings = UserReadings.objects.filter(user_id=request.user.id).values('ph', 'temp', 'moisture', 'humidity', 'datetime')
+    if not request.user.is_authenticated:
+        messages.error(request, "Please log in to access your profile.")
+        return redirect('login')
+    user_id = request.user.id
+    readings = UserReadings.objects.filter(user_id=user_id).values('ph', 'temp', 'moisture', 'humidity', 'datetime')
     ph_readings = []
     temp_readings = []
     moisture_readings = []
@@ -81,7 +84,7 @@ def profile(request):
         'moisture_readings': moisture_readings,
         'humidity_readings': humidity_readings,
         'datetimes': datetimes,
-        'user': User.objects.get(id=id),
+        'user': User.objects.get(id=user_id),
         'ph_mean': round(sum(ph_readings) / float(len(ph_readings)), 2) if ph_readings != [] else 0.0,
         'temp_mean': round(sum(temp_readings) / float(len(temp_readings)), 2) if temp_readings != [] else 0.0,
         'moisture_mean': round(sum(moisture_readings) / float(len(moisture_readings)), 2) if moisture_readings != [] else 0.0,
