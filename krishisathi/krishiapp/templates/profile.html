@@ -1,4 +1,5 @@
 {% extends 'layout.html' %}
+{% load static %}
 {% load numeric_operations %}
 
 {% block title %}
@@ -14,6 +15,15 @@
 
         table, th, td {
             border: 5px solid black;
+        }
+
+        .crop-div {
+            text-align: center;
+        }
+
+        .crop-image {
+            width: 100%;
+            height: 500px;
         }
     </style>
 
@@ -36,18 +46,27 @@
         <br>
         <div class="row text-center">
             <div class="col-8 offset-2">
-                <h3>The readings below indicate that your soil is suitable
-                    for <br><strong style="color: #13807f;">"
-                        {% if user.userreadings_set.last.classifier %}
-                            {{ user.userreadings_set.last.classifier }}
-                        {% else %}
-                            Not Classified Yet
-                        {% endif %}
-                        "
-                    </strong></h3>
+                <h3>The readings below indicate that your soil is more suitable for</h3>
             </div>
         </div>
         <br><br>
+        {% for classifier in classifiers %}
+            <div class="jumbotron">
+                <div class="row text-center">
+                    <div class="col-6 offset-3">
+                        <h1>{{ classifier | upper }}</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 crop-div">
+                        <img src="{% static 'img/crop-images/orange-1.png' %}" class="crop-image">
+                    </div>
+                    <div class="col-6 crop-div">
+                        <img src="{% static 'img/crop-images/orange-2.jpg' %}" class="crop-image">
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
         <div class="row">
             <div class="col-6">
                 <div class="line-chart">

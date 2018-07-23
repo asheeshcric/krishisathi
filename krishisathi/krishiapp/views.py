@@ -1,3 +1,5 @@
+from collections import Counter
+
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -78,6 +80,14 @@ def profile(request):
         moisture_readings.append(reading.get('moisture') * 100)
         humidity_readings.append(reading.get('humidity') * 100)
         datetimes.append(reading.get('datetime').isoformat())
+
+    classifiers = UserReadings.objects.filter(user=request.user).values_list('classifier', flat=True)
+    counter = Counter(classifiers)
+    try:
+        counter.pop(None)
+    except KeyError:
+        pass
+    classifiers = list(counter.keys())
     context = {
         'ph_readings': ph_readings,
         'temp_readings': temp_readings,
@@ -89,6 +99,7 @@ def profile(request):
         'temp_mean': round(sum(temp_readings) / float(len(temp_readings)), 2) if temp_readings != [] else 0.0,
         'moisture_mean': round(sum(moisture_readings) / float(len(moisture_readings)), 2) if moisture_readings != [] else 0.0,
         'humidity_mean': round(sum(humidity_readings) / float(len(humidity_readings)), 2) if humidity_readings != [] else 0.0,
+        'classifiers': classifiers
     }
     return render(request, 'profile.html', context)
 
