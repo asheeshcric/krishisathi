@@ -62,8 +62,8 @@ def about(request):
     return render(request, 'about.html')
 
 
-def profile(request, id):
-    readings = UserReadings.objects.filter(user_id=id).values('ph', 'temp', 'moisture', 'humidity', 'datetime')
+def profile(request):
+    readings = UserReadings.objects.filter(user_id=request.user.id).values('ph', 'temp', 'moisture', 'humidity', 'datetime')
     ph_readings = []
     temp_readings = []
     moisture_readings = []
