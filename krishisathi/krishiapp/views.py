@@ -125,6 +125,6 @@ def api_add_readings(request):
     except Exception as error:
         return JsonResponse({'success': False, 'classifier': None}, safe=False)
 
-    
+
 def calculate_mean(readings):
     return round(sum(readings) / float(len(readings)), 2) if readings != [] else 0.0
