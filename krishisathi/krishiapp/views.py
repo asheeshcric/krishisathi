@@ -88,8 +88,8 @@ def profile(request):
     except KeyError:
         pass
     classifiers = list(counter.keys())
-    if len(classifiers) > 3:
-        classifiers = classifiers[0:3]
+    if len(classifiers) > 4:
+        classifiers = classifiers[0:4]
     context = {
         'ph_readings': ph_readings,
         'temp_readings': temp_readings,
@@ -101,8 +101,10 @@ def profile(request):
         'temp_mean': calculate_mean(temp_readings),
         'moisture_mean': calculate_mean(moisture_readings),
         'humidity_mean': calculate_mean(humidity_readings),
-        'classifiers': classifiers
+        'classifiers': classifiers,
+        'image_width': 100 / len(classifiers)
     }
+    print(len(classifiers))
     return render(request, 'profile.html', context)
 
 
