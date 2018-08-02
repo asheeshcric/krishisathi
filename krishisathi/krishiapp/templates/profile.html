@@ -106,10 +106,12 @@
         {% for classifier in classifiers %}
             <div class="responsive">
                 <div class="gallery">
-                    <a target="_blank" href="{% static 'img/crop-images/orange-1.png' %}">
-                        <img src="{% static 'img/crop-images/orange-1.png' %}" alt="Cinque Terre" width="{{ image_width }}" height="400">
+                    {% with 'img/crop_images/'|add:classifier.lower|add:'.jpg' as crop_image %}
+                    <a target="_blank" href="{% static crop_image %}">
+                        <img src="{% static crop_image %}" alt="{{ classifier.upper }}" width="{{ image_width }}" height="400">
                     </a>
-                    <div class="desc">{{ classifier }}</div>
+                    {% endwith %}
+                    <div class="desc"><b>{{ classifier|capfirst }}</b></div>
                 </div>
             </div>
         {% endfor %}
