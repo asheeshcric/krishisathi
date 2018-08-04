@@ -145,6 +145,6 @@ double avergearray(int* arr, int number){
     }//for
     avg = (double)amount/(number-2);
   }//if
-  return avg;
+  return avg / 2.13;
 }
 

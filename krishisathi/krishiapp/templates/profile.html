@@ -26,7 +26,6 @@
             height: 500px;
         }
 
-
         /* Image Gallery CSS */
         div.gallery {
             border: 1px solid #ccc;
@@ -99,17 +98,23 @@
             </div>
         </div>
         <br><br>
-
-        <h2>Crop Prediction Gallery</h2>
-        <h4>These are the most suitable crops  that can be grown on your soil.</h4>
-
+        {% if classifiers %}
+            <h2>Crop Prediction Gallery</h2>
+            <h4>These are the most suitable crops that can be grown on your soil.</h4>
+        {% else %}
+            <div class="text-center">
+                <h2>Take some readings with your device and see the results below.</h2>
+                <br><br><br><br><br>
+            </div>
+        {% endif %}
         {% for classifier in classifiers %}
             <div class="responsive">
                 <div class="gallery">
                     {% with 'img/crop_images/'|add:classifier.lower|add:'.jpg' as crop_image %}
-                    <a target="_blank" href="{% static crop_image %}">
-                        <img src="{% static crop_image %}" alt="{{ classifier.upper }}" width="{{ image_width }}" height="400">
-                    </a>
+                        <a target="_blank" href="{% static crop_image %}">
+                            <img src="{% static crop_image %}" alt="{{ classifier.upper }}" width="{{ image_width }}"
+                                 height="400">
+                        </a>
                     {% endwith %}
                     <div class="desc"><b>{{ classifier|capfirst }}</b></div>
                 </div>
@@ -118,11 +123,15 @@
 
         <div class="clearfix"></div>
 
-        <div style="padding:6px;">
-            <p>The crops and fruits shown in the above images are suitable for plantation in your field or garden. Click on the respective crop to find
- more details about it and know how to increase efficiency of the soil using suitable techniques for that crop.</p>
-            <p>The charts below show the readings of your device, determining the characteristics of your soil.</p>
-        </div>
+        {% if classifiers %}
+            <div style="padding:6px;">
+                <p>The crops and fruits shown in the above images are suitable for plantation in your field or garden.
+                    Click on the respective crop to find
+                    more details about it and know how to increase efficiency of the soil using suitable techniques for
+                    that crop.</p>
+                <p>The charts below show the readings of your device, determining the characteristics of your soil.</p>
+            </div>
+        {% endif %}
 
 
 

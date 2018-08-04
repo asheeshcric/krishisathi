@@ -31,7 +31,7 @@ def signup(request):
             login_user = authenticate(request, username=user.username, password=request.POST.get('password'))
             login(request, login_user)
             messages.success(request, 'User created successfully.')
-            return redirect('profile', user.id)
+            return redirect('profile')
         except Exception as error:
             print(error)
             messages.error(request, 'User creation failed. Please try again.')
@@ -102,7 +102,7 @@ def profile(request):
         'moisture_mean': calculate_mean(moisture_readings),
         'humidity_mean': calculate_mean(humidity_readings),
         'classifiers': classifiers,
-        'image_width': 100 / len(classifiers)
+        'image_width': 100 / (len(classifiers) or 1)
     }
     print(len(classifiers))
     return render(request, 'profile.html', context)
@@ -129,4 +129,5 @@ def api_add_readings(request):
 
 
 def calculate_mean(readings):
-    return round(sum(readings) / float(len(readings)), 2) if readings != [] else 0.0
+    x = round(sum(readings) / float(len(readings)), 2) if readings else 0.0
+    return round(sum(readings) / float(len(readings)), 2) if readings else 0.0
