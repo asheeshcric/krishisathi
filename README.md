@@ -25,9 +25,17 @@ The web application was developed in Django. It was particularly important to cr
 * The submitted data gets through the trained model and different graphs and insights on the real data are shown on the web app; along with the classification of suitable crops that can be grown on the field
 
 Web Application
-:------------------------------:
+:------------------------------------------------------------------------------------:
 ![](https://github.com/asheeshcric/krishisathi/blob/master/images/web_application.png)
 
+
+#### Machine Learning
+We used a classical machine learning technique involving decision trees--called *Random Forest Classifier*
+* The trained model yielded 84.6% accuracy on the testing set
+* The dataset was accessed and refined from the ![Ministry of Agriculture, Nepal](http://www.moad.gov.np/en) with the help of our supervisor and his contacts in the soil department
+* The prominent features chosen for the machine learning model were *pH*, *soil_moisture*, *temperature*, and *humidity*
+* We trained the model with around 48,000 data points classifying eight major types of soils--each corresponding to their favorable crops and fruits
+* The classified soil type and its corresponding suitable crops and fruits are displayed as recommendation for the user (or farmer) in the web portal 
 
 ## Getting Started
 
