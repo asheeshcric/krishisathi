@@ -12,3 +12,7 @@ I first started the project focusing on the hardware part (me being a Robotics e
 * The device was build around *Arduino* as the brain (or microcontroller) along with sensors like pH Meter (SKU: SEN0161), humidity & temperature sensor (DHT22) and soil moisture sensor (SEN-13322)
 * The values obtained from the sensors acted as the feature for our machine learning model
 * To collect the measured data from soil (with the help of sensors), I build an android application using the [MIT App Inventor 2](http://ai2.appinventor.mit.edu/) because I did not have proper knowledge of JAVA and Android Studio
+
+Android Application             |  Hardware Schematics
+:------------------------------:|:-------------------------:
+![](https://github.com/asheeshcric/krishisathi/blob/master/images/android_application.png)  |  ![](https://github.com/asheeshcric/krishisathi/blob/master/images/hardware_schematics.png)
