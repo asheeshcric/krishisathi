@@ -82,4 +82,4 @@ Note: You might want to use a virtual environment for installing the python pack
 * **Manish Adhikari** - *Project Member* - [Manish Adhikari](https://github.com/Manish-Adhikari)
 
 ## Acknowledgements
-* Personnels who were involved in helping the project from Kathmandu Engineering College, TU
+* Personnels who were involved in contributing to the project from Kathmandu Engineering College, TU
