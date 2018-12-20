@@ -27,3 +27,51 @@ The web application was developed in Django. It was particularly important to cr
 Web Application
 :------------------------------:
 ![](https://github.com/asheeshcric/krishisathi/blob/master/images/web_application.png)
+
+
+## Getting Started
+
+The instructions below will get you a copy of the project up and running on your local machine for development and testing purposes. To get started, clone the repository on a folder that you want.
+
+
+### Prerequisites
+
+The major things that you will need to run this application are Python3 and pip3
+
+```
+ $ sudo apt-get install python3
+ $ sudo apt-get install python3-pip
+```
+
+### Installing
+
+After you get the python3 and the pip3 installed and working, you will need to install the requirements to run your project.
+
+For that purpose, go to the root directory of the repository and run the following command:
+
+```
+ $ pip3 install -r requirements.txt
+```
+
+Note: You might want to use a virtual environment for installing the python packages required for the project
+
+```
+ $ sudo pip3 install virtualenv
+ $ virtualenv krishisathi
+ $ source path/to/env/bin/activate
+```
+
+## Built With
+
+* [Django](https://docs.djangoproject.com/en/2.0/) - The web framework used
+* [MIT App Inventor 2](http://ai2.appinventor.mit.edu/) - Android app building tool
+* [scikit-learn](https://scikit-learn.org/) - The Machine Learning library used
+
+
+## Authors
+
+* **Ashish Jaiswal** - *Initial work* - *Project Lead* - [Ashish Jaiswal](http://jashish.com.np)
+* **Manish Adhikari** - *Project Member* - [Manish Adhikari](https://github.com/Manish-Adhikari)
+
+## Acknowledgements
+* Personnels who were involved in helping the project from Kathmandu Engineering College, TU
