@@ -61,13 +61,17 @@ For that purpose, go to the root directory of the repository and run the followi
  $ pip3 install -r requirements.txt
 ```
 
-Note: You might want to use a virtual environment for installing the python packages required for the project
+**Note**: You might want to use a virtual environment for installing the python packages required for the project
 
 ```
  $ sudo pip3 install virtualenv
  $ virtualenv krishisathi
  $ source path/to/env/bin/activate
 ```
+
+For database services, you can either use the provided Sqlite3 database from Django or else you can setup your own MySQL or Postgres database service. The configurations for the project is decoupled in *env.example* file. You need to copy that file to a separate file named *.env* inside krishisathi/ folder. You local configurations are the ones that go inside the *.env* file
+
+**Note**: If you are using the pre-provided sqlite3 from Django, then please tweak the database settings in the settings.py file. You can use the default configurations instead of the one that I've used.
 
 ## Built With
 
