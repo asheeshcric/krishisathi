@@ -53,7 +53,7 @@ The major things that you will need to run this application are Python3 and pip3
 
 ### Installing
 
-After you get the python3 and the pip3 installed and working, you will need to install the requirements to run your project.
+After you get the python3 and the pip3 installed and working, you will need to install the requirements to run your project. The django application resides inside the folder named *"krishisathi"*
 
 For that purpose, go to the root directory of the repository and run the following command:
 
@@ -86,4 +86,4 @@ For database services, you can either use the provided Sqlite3 database from Dja
 * **Manish Adhikari** - *Project Member* - [Manish Adhikari](https://github.com/Manish-Adhikari)
 
 ## Acknowledgements
-* Personnels who were involved in contributing to the project from Kathmandu Engineering College, TU
+* To the personnel who were involved in contributing to the project from Kathmandu Engineering College, TU
