@@ -1,7 +1,7 @@
 # KrishiSathi
 
 A web portal for farmers integrated with ML and IoT to analyze daily crops and their growth.
-The main purpose of initiating this undertaking for my "Final Year Project" was to get an insight on the integration amon hardware, software and AI (learning). 
+The main purpose of initiating this undertaking for my "Final Year Project" was to get an insight on the integration of hardware, software and AI (learning). 
 
 ## Description
 
