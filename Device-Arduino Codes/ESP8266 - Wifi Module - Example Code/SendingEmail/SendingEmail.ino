@@ -11,12 +11,12 @@ SoftwareSerial softser(ESP_RX, ESP_TX);
 Adafruit_ESP8266 wifi(&softser, &Serial, ESP_RST);
 // Must call begin() on the stream(s) before using Adafruit_ESP8266 object.
 
-#define ESP_SSID "Asheesh" // Your network name here
-#define ESP_PASS "Asheesh@43739" // Your network password here
+#define ESP_SSID "" // Your network name here
+#define ESP_PASS "" // Your network password here
 
-char EMAIL_FROM[] = "ashiz2013@gmail.com";
-char EMAIL_PASSWORD[] =  "iamashish";
-char EMAIL_TO[] = "cool_ashish18@hotmail.com";
+char EMAIL_FROM[] = "";
+char EMAIL_PASSWORD[] =  "";
+char EMAIL_TO[] = "";
 char SUBJECT[]  = "My ESP8266";
 char EMAIL_CONTENT[] = "Hello,\r\nThis is a message from your ESP8266.";
 
