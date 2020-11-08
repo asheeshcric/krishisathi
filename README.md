@@ -9,6 +9,10 @@ Project Report available at [KrishiSathi Docs](https://github.com/asheeshcric/kr
 
 We would like to describe each building process separately and reflect my experiences and tools that we used throughout the development phase.
 
+#### System Block Diagram
+
+![](https://raw.githubusercontent.com/asheeshcric/krishisathi/master/images/krishisathi_system_diagram.png)
+
 #### Hardware and Mobile Application
 We first started the project focusing on the hardware (we being robotics enthusiasts definitely helped with works related to embedded systems)
 * The device was built around *Arduino* as the microcontroller (or brain) along with different sensors like pH Meter (SKU: SEN0161), humidity & temperature sensor (DHT22) and soil moisture sensor (SEN-13322)
